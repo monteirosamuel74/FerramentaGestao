@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Excluir Instância de {{ instancia.ferramenta.nome }}</h2>
+<p>Tem certeza que deseja excluir esta instância?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Excluir</button>
+</form>
+<a href="{% url 'detalhes_instancia' instancia.id %}">Cancelar</a>
+{% endblock content %}

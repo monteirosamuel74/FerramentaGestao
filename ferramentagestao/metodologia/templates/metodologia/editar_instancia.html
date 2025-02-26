@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h2>Editar Instância</h2>
+    {{ instancia_form.as_p }}
+    
+    <h2>Editar PDCA</h2>
+    {{ pdca_form.as_p }}
+    
+    <button type="submit">Salvar</button>
+</form>
+<a href="{% url 'detalhes_instancia' instancia.id %}">Cancelar</a>
+{% endblock content %}

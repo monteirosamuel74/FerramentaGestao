@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bem-vindo ao Sistema de Ferramentas de Gestão</h1>
+<p>Escolha uma metodologia para começar:</p>
+<ul>
+    {% for metodologia in metodologias %}
+        <li>
+            <a href="{% url 'detalhes_metodologia' metodologia.id %}">
+                {{ metodologia.nome }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ metodologia.nome }}</h1>
+<p>{{ metodologia.descricao }}</p>
+
+<h2>Ferramentas Disponíveis</h2>
+<ul>
+    {% for ferramenta in metodologia.ferramentas.all %}
+        <li>
+            <a href="{% url 'detalhes_ferramenta' ferramenta.id %}">
+                {{ ferramenta.nome }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

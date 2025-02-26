@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ ferramenta.nome }}</h1>
+<img src="{{ ferramenta.imagem.url }}" alt="{{ ferramenta.nome }}" style="width: 200px; height: auto;">
+<p>{{ ferramenta.descricao }}</p>
+
+<h2>Instâncias desta Ferramenta</h2>
+<ul>
+    {% for instancia in ferramenta.instancias.all %}
+        <li>{{ instancia.dono.username }} - Criada em {{ instancia.data_criacao }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

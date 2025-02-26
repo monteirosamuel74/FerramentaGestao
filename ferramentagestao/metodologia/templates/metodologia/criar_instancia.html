@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Criar Instância de {{ ferramenta.nome }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Tem certeza que deseja criar uma instância desta ferramenta?</p>
+    <button type="submit" class="btn btn-primary">Criar Instância</button>
+</form>
+<a href="{% url 'home' %}">Cancelar</a>
+{% endblock content %}

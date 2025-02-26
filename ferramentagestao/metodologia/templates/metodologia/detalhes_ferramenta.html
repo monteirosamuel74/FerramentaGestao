@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+<style>
+    textarea {
+        width: 100%;  /* Largura total */
+        height: 40px;  /* Altura fixa */
+        resize: none;  /* Impede o redimensionamento */
+    }
+</style>
+{% block content %}
+<h1>{{ ferramenta.nome }}</h1>
+{% if ferramenta.imagem %}
+    <img src="{{ ferramenta.imagem.url }}" alt="{{ ferramenta.nome }}" style="width: 200px; height: auto;">
+{% else %}
+    <p>Nenhuma imagem disponível.</p>
+{% endif %}
+<p>{{ ferramenta.descricao }}</p>
+
+<h2>PDCA</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<a href="{% url 'adicionar_participante' ferramenta.id %}" class="btn btn-primary">Adicionar Participantes</a>
+<h3>PDCAs Existentes</h3>
+<ul>
+    {% for pdca in pdcas %}
+        <li>
+            <p><strong>Plano:</strong> {{ pdca.plano }}</p>
+            <p><strong>Execução:</strong> {{ pdca.execucao }}</p>
+            <p><strong>Verificação:</strong> {{ pdca.verificacao }}</p>
+            <p><strong>Ação:</strong> {{ pdca.acao }}</p>
+            <p><strong>Criado por:</strong> {{ pdca.dono.username }}</p>
+            <p><strong>Data de criação:</strong> {{ pdca.data_criacao }}</p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
